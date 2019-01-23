@@ -13,6 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.arcade_drive;
 
@@ -36,11 +37,24 @@ public class tank_drive extends Subsystem {
     frDrive.setInverted(false);
     blDrive.setInverted(false);
     brDrive.setInverted(false);
-
+    kopdrive.setDeadband(0.1);
 }
 
 public void teleopDrive(Joystick driveControl){
-  kopdrive.arcadeDrive(driveControl.getRawAxis(1), driveControl.getRawAxis(4));
+  double forward = driveControl.getRawAxis(1);
+  double turn = driveControl.getRawAxis(4);
+  SmartDashboard.putNumber("fr",frDrive.getOutputCurrent());
+  SmartDashboard.putNumber("br",brDrive.getOutputCurrent());
+  SmartDashboard.putNumber("fl",flDrive.getOutputCurrent());
+  SmartDashboard.putNumber("bl",blDrive.getOutputCurrent());
+  
+  if (Math.abs(forward) < .10){
+    forward=0;
+  }
+  if (Math.abs(turn) < .10){
+    turn=0;
+  }
+kopdrive.arcadeDrive(forward, turn);
 }
 
   @Override
