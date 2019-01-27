@@ -16,8 +16,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Hatch extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  Solenoid finger = new Solenoid(1);
-  Solenoid pusher = new Solenoid(2);
+  Solenoid finger = new Solenoid(0);
+  Solenoid pusher = new Solenoid(1);
   
   public void score(){
     finger.set(false);
