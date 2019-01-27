@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Hatch;
 import frc.robot.subsystems.tank_drive;
 
 /**
@@ -27,6 +28,7 @@ public class Robot extends TimedRobot {
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static OI m_oi;
   public static tank_drive kopchassis = new tank_drive();
+  public static Hatch hatch;// = new Hatch();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -38,12 +40,21 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
+    
+    try {
+    hatch = new Hatch();
+    }
+    catch(Exception ex){
+      System.out.println("Failed Create Hatch");
+    }
 
     kopchassis.configDrive();
     
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+
+
   }
 
   /**
