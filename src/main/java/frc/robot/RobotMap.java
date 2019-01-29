@@ -28,4 +28,9 @@ public class RobotMap {
   public static int flDrive = 3;
   public static int brDrive = 2;
   public static int blDrive = 4;
+  public static int backTalon = 5;
+  public static int frTalon = 6;
+  public static int flTalon = 7;
+public static int mechTalon1;
+public static int mechTalon2;
 }

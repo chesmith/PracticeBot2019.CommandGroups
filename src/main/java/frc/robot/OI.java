@@ -7,6 +7,15 @@
 
 package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.CargoDeliver;
+import frc.robot.commands.CargoDown;
+import frc.robot.commands.CargoIntake;
+import frc.robot.commands.CargoUp;
+import frc.robot.commands.HatchReset;
+import frc.robot.commands.HatchRetrieve;
+import frc.robot.commands.HatchScore;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -14,9 +23,27 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class OI {
   Joystick driver = new Joystick(0);
-
+  Joystick command = new Joystick(1);
   public Joystick returnJoystickDrive(){
     return driver;
+  }
+    public OI(){
+      Button Reset = new JoystickButton(command, 1); // Button A
+      Button Retrieve = new JoystickButton(command, 2); // Button B
+      Button Score = new JoystickButton(command, 3); // Button X
+      Button up = new JoystickButton(command, 5); // left bumper
+      Button down = new JoystickButton(command, 6); // right bumper
+      Button intake = new JoystickButton(command, 7); // 3 line button
+      Button deliver = new JoystickButton(command, 8); // double square button
+
+
+      intake.whileHeld(new CargoIntake());
+      deliver.whileHeld(new CargoDeliver());
+      up.whileHeld(new CargoUp());
+      down.whileHeld(new CargoDown());
+      Reset.whileHeld(new HatchReset());
+      Retrieve.whileHeld(new HatchRetrieve());
+      Score.whileHeld(new HatchScore());
   }
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
