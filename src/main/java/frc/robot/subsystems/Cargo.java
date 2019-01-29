@@ -19,7 +19,6 @@ import frc.robot.commands.CargoStop;
 public class Cargo extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  WPI_TalonSRX backTalon = new WPI_TalonSRX(RobotMap.backTalon);
   WPI_TalonSRX frTalon = new WPI_TalonSRX(RobotMap.frTalon);
   WPI_TalonSRX flTalon = new WPI_TalonSRX(RobotMap.flTalon);
   WPI_TalonSRX mechTalon1 = new WPI_TalonSRX(RobotMap.mechTalon1);
@@ -29,10 +28,8 @@ public class Cargo extends Subsystem {
     // double intake = JoystickButton(1);
     // double deliver = JoystickButton(4);
 
-    backTalon.follow(frTalon);
     frTalon.follow(flTalon);
 
-    backTalon.setInverted(false);
     frTalon.setInverted(false);
     flTalon.setInverted(false);
     
@@ -44,13 +41,11 @@ public class Cargo extends Subsystem {
 }
 
   public void up() {
-    backTalon.set(1);
     frTalon.set(1);
     flTalon.set(1);
   }
 
   public void down(){
-    backTalon.set(-1);
     frTalon.set(-1);
     flTalon.set(-1);
   }
@@ -69,7 +64,6 @@ public class Cargo extends Subsystem {
   public void stop(){
     mechTalon1.set(0);
     mechTalon2.set(0);
-    backTalon.set(0);
     frTalon.set(0);
     flTalon.set(0);
   }
