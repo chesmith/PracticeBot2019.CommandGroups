@@ -16,6 +16,8 @@ import frc.robot.commands.CargoUp;
 import frc.robot.commands.HatchReset;
 import frc.robot.commands.HatchRetrieve;
 import frc.robot.commands.HatchScore;
+import frc.robot.commands.PushStop;
+import frc.robot.commands.PushUp;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -35,7 +37,8 @@ public class OI {
       Button down = new JoystickButton(command, 6); // right bumper
       Button intake = new JoystickButton(command, 7); // 3 line button
       Button deliver = new JoystickButton(command, 8); // double square button
-
+      Button climbergo = new JoystickButton(driver, 1); //A on the drivers remote
+      Button climberstop = new JoystickButton(driver, 2); //B on the drivers remote
 
       intake.whileHeld(new CargoIntake());
       deliver.whileHeld(new CargoDeliver());
@@ -44,6 +47,8 @@ public class OI {
       Reset.whileHeld(new HatchReset());
       Retrieve.whileHeld(new HatchRetrieve());
       Score.whileHeld(new HatchScore());
+      climbergo.whileHeld(new PushUp());
+      climberstop.whileHeld(new PushStop());
   }
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
