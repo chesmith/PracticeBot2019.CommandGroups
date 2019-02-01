@@ -9,15 +9,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.CargoDeliver;
-import frc.robot.commands.CargoDown;
-import frc.robot.commands.CargoIntake;
-import frc.robot.commands.CargoUp;
-import frc.robot.commands.HatchReset;
-import frc.robot.commands.HatchRetrieve;
-import frc.robot.commands.HatchScore;
-import frc.robot.commands.PushStop;
-import frc.robot.commands.PushUp;
+import frc.robot.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -30,51 +22,12 @@ public class OI {
     return driver;
   }
     public OI(){
-      Button Reset = new JoystickButton(command, 1); // Button A
-      Button Retrieve = new JoystickButton(command, 2); // Button B
-      Button Score = new JoystickButton(command, 3); // Button X
-      Button up = new JoystickButton(command, 5); // left bumper
-      Button down = new JoystickButton(command, 6); // right bumper
-      Button intake = new JoystickButton(command, 7); // 3 line button
-      Button deliver = new JoystickButton(command, 8); // double square button
-      Button climbergo = new JoystickButton(driver, 1); //A on the drivers remote
-      Button climberstop = new JoystickButton(driver, 2); //B on the drivers remote
+      Button hatchReset = new JoystickButton(command, 1); // Button A
+      Button hatchRetrieve = new JoystickButton(command, 2); // Button B
+      Button hatchScore = new JoystickButton(command, 3); // Button X
 
-      intake.whileHeld(new CargoIntake());
-      deliver.whileHeld(new CargoDeliver());
-      up.whileHeld(new CargoUp());
-      down.whileHeld(new CargoDown());
-      Reset.whileHeld(new HatchReset());
-      Retrieve.whileHeld(new HatchRetrieve());
-      Score.whileHeld(new HatchScore());
-      climbergo.whileHeld(new PushUp());
-      climberstop.whileHeld(new PushStop());
+      hatchReset.whileHeld(new HatchReset2());
+      hatchRetrieve.whileHeld(new HatchRetrieve2());
+      hatchScore.whileHeld(new HatchScore2());
   }
-  //// CREATING BUTTONS
-  // One type of button is a joystick button which is any button on a
-  //// joystick.
-  // You create one by telling it which joystick it's on and which button
-  // number it is.
-  // Joystick stick = new Joystick(port);
-  // Button button = new JoystickButton(stick, buttonNumber);
-
-  // There are a few additional built in buttons you can use. Additionally,
-  // by subclassing Button you can create custom triggers and bind those to
-  // commands the same as any other Button.
-
-  //// TRIGGERING COMMANDS WITH BUTTONS
-  // Once you have a button, it's trivial to bind it to a button in one of
-  // three ways:
-
-  // Start the command when the button is pressed and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  // button.whenPressed(new ExampleCommand());
-
-  // Run the command while the button is being held down and interrupt it once
-  // the button is released.
-  // button.whileHeld(new ExampleCommand());
-
-  // Start the command when the button is released and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  // button.whenReleased(new ExampleCommand());
 }

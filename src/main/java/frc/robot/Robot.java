@@ -12,12 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.Cargo;
-import frc.robot.subsystems.Climber;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.Hatch;
-import frc.robot.subsystems.tank_drive;
+import frc.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,12 +22,9 @@ import frc.robot.subsystems.tank_drive;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static OI m_oi;
   public static tank_drive kopchassis = new tank_drive();
   public static Hatch hatch;// = new Hatch();
-  public static Cargo cargo;// = new Cargo();
-  public static Climber climber;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -52,23 +44,9 @@ public class Robot extends TimedRobot {
       System.out.println("Failed Create Hatch");
     }
 
-    try {
-    climber = new Climber();
-    }
-    catch(Exception ex){
-      System.out.println("Failed Create Climber");
-    }
-
-    try {
-      cargo = new Cargo();
-    }
-    catch(Exception ex){
-      System.out.println("Failed Create Cargo");
-    }
-
     kopchassis.configDrive();
     
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+    // m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
 

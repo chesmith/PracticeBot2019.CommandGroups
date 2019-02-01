@@ -9,8 +9,8 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.commands.HatchReset;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.*;
 
 /**
  * Add your docs here.
@@ -36,11 +36,31 @@ public class Hatch extends Subsystem {
     finger.set(true);
   }
   
+  public void fingerExtend() {
+    SmartDashboard.putString("hatch finger", "extend");
+    finger.set(false);
+  }
+  
+  public void fingerRetract() {
+    SmartDashboard.putString("hatch finger", "retract");
+    finger.set(true);
+  }
+
+  public void pusherExtend() {
+    SmartDashboard.putString("hatch pusher", "extend");
+    pusher.set(true);
+  }
+
+  public void pusherRetract() {
+    SmartDashboard.putString("hatch pusher", "retract");
+    pusher.set(false);
+  }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // TODO: set default command to be reset
-    setDefaultCommand(new HatchReset());
+    setDefaultCommand(new HatchReset2());
 
   }
 }

@@ -10,11 +10,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class PushStop extends Command {
-  public PushStop() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-    requires(Robot.climber);
+public class HatchFingerRetract extends Command {
+  public HatchFingerRetract() {
+    requires(Robot.hatch);
+    setTimeout(0);
   }
 
   // Called just before this Command runs the first time
@@ -25,13 +24,13 @@ public class PushStop extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.climber.pushstop();
+    Robot.hatch.fingerRetract();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return isTimedOut();
   }
 
   // Called once after isFinished returns true
