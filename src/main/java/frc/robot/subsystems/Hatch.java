@@ -16,8 +16,6 @@ import frc.robot.commands.*;
  * Add your docs here.
  */
 public class Hatch extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
   Solenoid finger = new Solenoid(0);
   Solenoid pusher = new Solenoid(1);
   
@@ -37,30 +35,27 @@ public class Hatch extends Subsystem {
   }
   
   public void fingerExtend() {
-    SmartDashboard.putString("hatch finger", "extend");
+    SmartDashboard.putBoolean("finger", true);
     finger.set(false);
   }
   
   public void fingerRetract() {
-    SmartDashboard.putString("hatch finger", "retract");
+    SmartDashboard.putBoolean("finger", false);
     finger.set(true);
   }
 
   public void pusherExtend() {
-    SmartDashboard.putString("hatch pusher", "extend");
+    SmartDashboard.putBoolean("pusher", true);
     pusher.set(true);
   }
 
   public void pusherRetract() {
-    SmartDashboard.putString("hatch pusher", "retract");
+    SmartDashboard.putBoolean("pusher", false);
     pusher.set(false);
   }
 
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // TODO: set default command to be reset
     setDefaultCommand(new HatchReset2());
-
   }
 }

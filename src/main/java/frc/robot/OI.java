@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -16,18 +17,20 @@ import frc.robot.commands.*;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-  Joystick driver = new Joystick(0);
-  Joystick command = new Joystick(1);
-  public Joystick returnJoystickDrive(){
-    return driver;
-  }
-    public OI(){
-      Button hatchReset = new JoystickButton(command, 1); // Button A
-      Button hatchRetrieve = new JoystickButton(command, 2); // Button B
-      Button hatchScore = new JoystickButton(command, 3); // Button X
+  // Joystick driver = new Joystick(0);
+  Joystick command = new Joystick(0);
 
-      hatchReset.whileHeld(new HatchReset2());
-      hatchRetrieve.whileHeld(new HatchRetrieve2());
-      hatchScore.whileHeld(new HatchScore2());
+  public Joystick returnJoystickDrive() {
+    return command;
+  }
+
+  public OI() {
+    Button hatchReset = new JoystickButton(command, 1); // Button A
+    Button hatchRetrieve = new JoystickButton(command, 2); // Button B
+    Button hatchScore = new JoystickButton(command, 3); // Button X
+
+    hatchReset.whileHeld(new HatchReset2());
+    hatchRetrieve.whileHeld(new HatchRetrieve2());
+    hatchScore.whileHeld(new HatchScore2());
   }
 }
