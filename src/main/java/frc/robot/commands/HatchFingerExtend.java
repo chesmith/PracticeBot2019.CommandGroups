@@ -13,6 +13,11 @@ import frc.robot.Robot;
 public class HatchFingerExtend extends Command {
   public HatchFingerExtend() {
     requires(Robot.hatch);
+  }
+
+  // Called just before this Command runs the first time
+  @Override
+  protected void initialize() {
     setTimeout(0);
   }
 

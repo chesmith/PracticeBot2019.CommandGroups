@@ -13,12 +13,12 @@ import frc.robot.Robot;
 public class HatchFingerRetract extends Command {
   public HatchFingerRetract() {
     requires(Robot.hatch);
-    setTimeout(0);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    setTimeout(0);
   }
 
   // Called repeatedly when this Command is scheduled to run
